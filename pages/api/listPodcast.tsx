@@ -5,7 +5,7 @@ interface propertiesImage {
   height: number;
 }
 
-export interface Post { 
+export interface Podcast { 
   image: propertiesImage   
   name: string;
   author: string;
@@ -27,9 +27,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         name: enty['im:name'].label,
         author: enty['im:artist'].label,
         id: enty['id'].attributes['im:id']       
-      }
-    })
-    //console.log("postcads => ", JSON.stringify(postcads))
+      };
+    });
     res.status(200).json(postcads);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
