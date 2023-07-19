@@ -1,16 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
-interface propertiesImage {
-  url: string;
-  height: number;
-}
-
-export interface Podcast { 
-  image: propertiesImage   
-  name: string;
-  author: string;
-  id: number;
-}
+import { Podcast } from '../../utils/types'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   try {
@@ -18,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { feed } = await response.json();
     const { entry } = feed;
 
-    const postcads = entry.map((enty: any) => {
+    const postcads = entry.map((enty: any) : Podcast => {
       return {
         image: {
           url: enty['im:image'][2].label,

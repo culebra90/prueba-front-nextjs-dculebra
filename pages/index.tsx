@@ -1,10 +1,9 @@
 import React from 'react'
-import { Podcast } from './api/listPodcast';
+import { Podcast } from '../utils/types';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-
 import { HeaderTitle } from '../components/HeaderTitle';
 import { SearchBlock } from '../components/home/SearchBlock';
 import { CardPodcast, WithoutResults, LoadingPodcasts } from '../components/home/ResultsPodcasts';

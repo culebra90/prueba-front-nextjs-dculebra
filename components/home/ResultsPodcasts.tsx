@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import styles from '../../styles/Home.module.css';
-import { Podcast } from '../../pages/api/listPodcast';
+import { Podcast } from '../../utils/types';
 
 interface CardPodcastProps {
     podcast: Podcast;
