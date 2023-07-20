@@ -15,6 +15,7 @@ export interface propertiesEpisodes {
     date: string;
     description: string;
     duration: string;
+    id: string;
 }
 
 export interface DetailPodcast { 

@@ -1,11 +1,16 @@
 import '../styles/globals.css';
+import { AppProps } from 'next/app';
+import ErrorPage from 'next/error';
 
-interface MyAppProps {
-  Component: React.ComponentType;
-  pageProps: any; // Aquí deberías especificar el tipo correcto de pageProps si es posible.
-}
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  // Verificar si hay un error en las props y si el error es un error 404
+  if ('statusCode' in pageProps && pageProps.statusCode === 404) {
+    return (
+      <ErrorPage statusCode={404} />
+    );
+  }
 
-const MyApp: React.FC<MyAppProps> = ({ Component, pageProps }) => {
+  // Si no hay error o el error no es 404, renderizar la página normalmente
   return <Component {...pageProps} />;
 };
 

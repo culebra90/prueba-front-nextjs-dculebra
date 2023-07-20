@@ -27,21 +27,20 @@ export const DetailsPodcast = async (req: NextApiRequest, res: NextApiResponse):
     
     const channel = parsedData.rss.channel[0];
 
-    const episodes = channel.item.map((val:any) : propertiesEpisodes => {
-      return {
-        title: val.title,
-        date: moment(val.pubDate, "ddd, DD MMM YYYY HH:mm:ss Z").format("DD/MM/YYYY"),
-        description: val.description,
-        duration: val['itunes:duration']
-      }
-    })
-
     const payload : DetailPodcast = {
       title: channel.title[0],
       author: channel['itunes:author'][0],
       description: channel.description[0],
       image: results[0].artworkUrl600,
-      episodes: episodes
+      episodes: channel.item.map((val:any) : propertiesEpisodes => {
+        return {
+          title: val.title,
+          date: moment(val.pubDate, "ddd, DD MMM YYYY HH:mm:ss Z").format("DD/MM/YYYY"),
+          description: val.description,
+          duration: val['itunes:duration'],
+          id: val.guid[0]['_']
+        };
+      })
     };
 
     res.status(200).json([payload]);
