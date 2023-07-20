@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Link from 'next/link';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import { DetailPodcast } from '../../utils/types'
+import { propertiesEpisodes } from '../../utils/types'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -19,19 +19,15 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 interface DetailPodcastHtmlProps {
-    postData: DetailPodcast[];
+    episodes: propertiesEpisodes[];
     podcastId: string | undefined;
 }
 
-export const DetailPodcastHtml: React.FC<DetailPodcastHtmlProps> = ({ postData, podcastId }) => {
-
-    return (<Grid item xs={6} md={8}>
+export const DetailPodcastHtml: React.FC<DetailPodcastHtmlProps> = ({ episodes, podcastId }) => {
+    console.log("episodes = > ", episodes)
+    return (<Grid item xs={6} md={8} className="mt-0 pt-0">
                 <Item className='mb-5'>
-                {
-                    postData 
-                    ? <>Episodes: {postData[0]?.episodes.length}</> 
-                    : <>Episodes</> 
-                }
+                 Episodes: {episodes?.length}
                 </Item>
                 <Item className='p-3'>
                 <TableContainer component={Paper}>
@@ -44,7 +40,7 @@ export const DetailPodcastHtml: React.FC<DetailPodcastHtmlProps> = ({ postData, 
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {postData ? postData[0]?.episodes.map((row) => (
+                        {episodes?.map((row : propertiesEpisodes) => (
                         <TableRow key={row.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                             <TableCell key={`title_${row.title}`} component="th" scope="row">
                             <Link href={`/podcast/${podcastId}/episode/${row.id}`} passHref>{row.title}</Link>
@@ -52,7 +48,7 @@ export const DetailPodcastHtml: React.FC<DetailPodcastHtmlProps> = ({ postData, 
                             <TableCell key={`title_${row.date}`} align="right">{row.date}</TableCell>
                             <TableCell key={`title_${row.duration}`} align="right">{row.duration}</TableCell>
                         </TableRow>
-                        )) : <></>}
+                        ))}
                     </TableBody>
                     </Table>
                 </TableContainer>

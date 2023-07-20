@@ -14,28 +14,27 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 interface DetailPodcastProps {
-    postData: DetailPodcast[];
+    getData: DetailPodcast[];
 }
 
-export const LateralPanel: React.FC<DetailPodcastProps> = ({ postData }) => {
-    console.log("LateralPanel postData => ", postData)
+export const LateralPanel: React.FC<DetailPodcastProps> = ({ getData }) => {
     return (<Grid item xs={6} md={4}>
                 <Item>
                 {
-                    postData.length > 0 
-                    ? <Image src={postData[0]?.image} width={500} height={500}  alt="Picture of the author"/> 
+                    getData.length > 0 
+                    ? <Image src={getData[0]?.image} width={500} height={500}  alt="Picture of the author"/> 
                     : <>Cargando..</> 
                 }
                 <Divider variant="middle" />
                 {
-                    postData.length > 0  
-                    ? <p>{postData[0]?.title}<br/>by {postData[0]?.author}</p> 
+                    getData.length > 0  
+                    ? <p>{getData[0]?.title}<br/>by {getData[0]?.author}</p> 
                     : <>Cargando..</> 
                 }
                 <Divider variant="middle" />
                 {
-                    postData.length > 0  
-                    ? <div>Description:<br/><div dangerouslySetInnerHTML={{ __html: postData[0]?.description }} /></div> 
+                    getData.length > 0  
+                    ? <div>Description:<br/><div dangerouslySetInnerHTML={{ __html: getData[0]?.description }} /></div> 
                     : <>Cargando..</> 
                 }
                 </Item>
