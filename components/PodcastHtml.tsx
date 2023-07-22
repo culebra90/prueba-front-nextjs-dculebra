@@ -8,21 +8,24 @@ import { HeaderTitleLoading } from './HeaderTitle';
 
 import { LateralPanel } from './podcast/LateralPanel';
 import { DetailPodcastHtml } from './podcast/DetailPodcast';
+import { EpisodePodcast } from './podcast/EpisodePodcast'
 
 export const PodcastHtml: React.FC = () => {
     const router = useRouter();
     const { podcast } = router.query;
     const [getData, setgetData] = useState<DetailPodcast[] | []>([]);
     const podcastId = podcast?.[1];
-    const episodeId = podcast?.[3];  
+    const episodeId = podcast?.[3]; 
+    
+    console.log("podcastId => ", podcastId)
 
     useEffect(() => {
-        const fetchData = async (podcastId : string) => {
+        const fetchData = async () => {
         const res = await fetch(`/api/podcasts/${podcastId}`);
         const getData = await res.json();        
         setgetData(getData);           
         };  
-        if (podcastId) fetchData(podcastId);
+        if (podcastId) fetchData();
     }, [podcastId]);
 
     return (      
@@ -34,11 +37,9 @@ export const PodcastHtml: React.FC = () => {
                 <Grid container spacing={12}>
                 <LateralPanel {...{ getData }} />
                 {
-                    episodeId !== undefined && podcastId !== undefined
-                    ? <h1 className='mt-50 pt-50'>detalles del episodio</h1>
-                    : podcast === undefined 
-                        ? <></> 
-                        : <DetailPodcastHtml episodes={getData[0]?.episodes} podcastId={podcastId} />
+                    episodeId !== undefined 
+                    ? <EpisodePodcast />
+                    : <DetailPodcastHtml episodes={getData[0]?.episodes} />
                 }                           
                 </Grid>
             </Box>

@@ -44,7 +44,7 @@ export const Home: React.FC = () => {
                 <Box className="flexGrow-1 mt-20">
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12, lg: 4 }} className="pt-15">
                     {(searchResults.length > 0) ? searchResults.map((podcast, i) => (<CardPodcast {...{ podcast, i }} />))
-                        : (swSearch) ? <WithoutResults /> : <></>}
+                        : (swSearch) ? <WithoutResults /> : <LoadingPodcasts />}
                     </Grid>
                 </Box>
             </Container>

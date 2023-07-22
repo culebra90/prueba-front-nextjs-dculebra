@@ -26,19 +26,26 @@ export const DetailsPodcast = async (req: NextApiRequest, res: NextApiResponse):
     });   
     
     const channel = parsedData.rss.channel[0];
-
+    
     const payload : DetailPodcast = {
       title: channel.title[0],
       author: channel['itunes:author'][0],
       description: channel.description[0],
       image: results[0].artworkUrl600,
-      episodes: channel.item.map((val:any) : propertiesEpisodes => {
+      episodes: channel.item.map((val:any, i: number) : propertiesEpisodes => { 
         return {
           title: val.title,
           date: moment(val.pubDate, "ddd, DD MMM YYYY HH:mm:ss Z").format("DD/MM/YYYY"),
           description: val.description,
           duration: val['itunes:duration'],
-          id: val.guid[0]['_']
+          id: (val.guid[0]['_'].indexOf('tag:soundcloud')===-1) 
+            ? val.guid[0]['_']
+            :  val.guid[0]['_'].split('/')[1],
+          media: (val.enclosure) ? {
+            length: val.enclosure?.[0]["$"]["length"],
+            type: val.enclosure?.[0]["$"]["type"],
+            url: val.enclosure?.[0]["$"]["url"]
+          } : false
         };
       })
     };

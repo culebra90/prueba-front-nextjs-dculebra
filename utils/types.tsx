@@ -16,6 +16,13 @@ export interface propertiesEpisodes {
     description: string;
     duration: string;
     id: string;
+    media: propetiesMedia | false;
+}
+
+interface propetiesMedia {
+    length: string;
+    type: string;
+    url: string;
 }
 
 export interface DetailPodcast { 
