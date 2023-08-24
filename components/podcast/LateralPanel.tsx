@@ -1,9 +1,9 @@
+import styles from './Podcast.module.css';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import Divider from '@mui/material/Divider';
 import { DetailPodcast } from '../../utils/types';
 import { Item } from '../../styles/functionStyle';
-import styles from '../../styles/Podcast.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 

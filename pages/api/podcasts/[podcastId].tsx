@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import 'dayjs/locale/es';
 import { parseString } from 'xml2js';
 import { DetailPodcast, propertiesEpisodes } from '../../../utils/types'
 import cacheData from "memory-cache";
@@ -35,7 +36,7 @@ export const DetailsPodcast = async (req: NextApiRequest, res: NextApiResponse):
         episodes: channel.item.map((val:any, i: number) : propertiesEpisodes => { 
           return {
             title: val.title,
-            date: moment(val.pubDate, "ddd, DD MMM YYYY HH:mm:ss Z").format("DD/MM/YYYY"),
+            date: dayjs(val.pubDate).format("D/M/YYYY"),
             description: val.description,
             duration: val['itunes:duration'],
             id: (val.guid) 

@@ -1,6 +1,6 @@
+import styles from './Header.module.css'
 import React from 'react';
 import Container from '@mui/material/Container';
-import styles from '../styles/Home.module.css'
 import Typography from '@mui/material/Typography';
 import { LoadingPodcasts } from '@/components/home/modulesHome';
 import Box from '@mui/material/Box';

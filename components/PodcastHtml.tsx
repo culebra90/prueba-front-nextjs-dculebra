@@ -31,7 +31,8 @@ export const PodcastHtml: React.FC = () => {
     return (
         <React.Fragment>
             <Container maxWidth="lg">
-            <HeaderTitleLoading loading={detailPodcast ? false : true} />           
+            <HeaderTitleLoading loading={detailPodcast?.id ? false : true} />
+            <hr/>
             <Box sx={{ flexGrow: 1 }} className="mt-5">
                 <Grid container spacing={12}>                
                 <LateralPanel {...{ detailPodcast }} />                

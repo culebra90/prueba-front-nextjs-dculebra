@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import { Podcast, DetailPodcast } from '../utils/types';
+import { Podcast } from '../utils/types';
 import { HeaderTitleLoading } from './HeaderTitle';
 import { SearchBlock, CardPodcast, WithoutResults, LoadingPodcasts } from './home/modulesHome';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,7 +14,6 @@ import { addPodcast } from '../redux/detailPodcastSlice';
 export const Home: React.FC = () => {
 
     const listPodcasts = useSelector((state: { list: Podcast[] }) => state.list);
-    const detailPodcast = useSelector((state: { detail: DetailPodcast }) => state.detail);
     const dispatch = useDispatch();   
     
     const [searchTerm, setSearchTerm] = useState('');
@@ -31,7 +30,7 @@ export const Home: React.FC = () => {
             .catch((error) => console.log(error));        
     }, [listPodcasts]);
 
-    useEffect(() => {        
+    useEffect(() => {
         const filteredResults = listPodcasts.filter(
             (post) => post.name.toLowerCase().includes(searchTerm.toLowerCase()) || post.author.toLowerCase().includes(searchTerm.toLowerCase())
         );
@@ -52,7 +51,7 @@ export const Home: React.FC = () => {
                 <SearchBlock {...{ searchTerm, handleSearch, numberSearch: searchResults?.length }} />
                 <Box className="flexGrow-1 mt-20">
                     {<Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12, lg: 4 }} className="pt-15">
-                    {(searchResults.length > 0) ? searchResults.map((v, i) => (<CardPodcast key={i} index={i} />))
+                    {(searchResults.length > 0) ? searchResults.map((podcast, i) => (<CardPodcast key={i} {...{ podcast }} />))
                         : (swSearch) ? <WithoutResults /> : <LoadingPodcasts />}
                     </Grid>}
                 </Box>

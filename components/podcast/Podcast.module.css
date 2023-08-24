@@ -1,0 +1,146 @@
+.player-audio{
+    width: 100% !important;
+    margin-top: 20px !important;
+}
+
+.title-episode{
+    color:black !important;
+    text-align: left !important;
+    margin-bottom: 10px !important;
+    font-weight: 900 !important;
+    margin-bottom: 20px !important;
+}
+
+.description-episode{
+    font-weight: 400 !important;
+    font-style: italic !important;
+    color: var(--grey-color) !important;
+}
+
+.item-lateral{
+    padding: 15px !important;    
+}
+
+.item-lateral img{
+    padding: 25px !important;
+    border-radius: 35px !important;
+}
+
+.lateral-description{
+    color:black !important;
+    text-align: left !important;
+}
+
+.lateral-description span{
+    display:block !important;
+    font-weight: 900 !important;
+    margin: 10px 0px !important;
+}
+
+.lateral-description .description-content{
+    font-style: italic !important;
+    color: var(--grey-color) !important;
+}
+
+.author-lateral{
+    color:black !important;
+    text-align: left !important;
+    margin: 15px 0 !important;
+}
+
+.author-lateral span{
+    font-weight: 900 !important;    
+    display: block !important;
+    font-size: 18px !important;
+}
+
+.author-lateral label{
+    font-style: italic !important;
+    color: var(--grey-color) !important;
+    display: block !important;
+}
+
+.link-author label{
+    transition: 0.5s all !important;
+}
+
+.link-author label:hover{
+    text-decoration: underline !important;
+    color: var(--link-color) !important;
+    cursor:pointer !important;
+}
+
+.imagen-link-podcast img{
+    transition: 0.5s all !important;
+    
+}
+
+.imagen-link-podcast img:hover{
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12) !important;
+    background: #ededed !important;
+    border-radius: 10px !important;
+}
+
+.link-title-episode .title-episode{
+    transition: 0.5s all !important;
+}
+
+.link-title-episode .title-episode:hover{
+    text-decoration: underline !important;
+    color:#0062e2 !important;
+}
+
+.filaPar{
+    background-color: '#ffffff' !important;
+}
+
+.filaImpar{
+    background-color: #f1f1f1 !important;
+}
+
+    
+.tableDetail {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    box-shadow: none !important;
+}
+
+.celda {
+    border-bottom: 1px solid #ccc !important;
+    padding: 8px 16px !important;    
+}
+
+.celda.link{
+    cursor: pointer !important;    
+}
+
+.celda.link:hover{
+    text-decoration: underline !important;
+}
+
+.primeraCelda {
+    border-left: none !important;
+    color:var(--link-color) !important;
+}
+
+.ultimaCelda {
+    border-right: none !important;
+}
+
+.strong-cell{
+    font-weight: 900 !important;
+    color:black !important;
+    font-size: 15px !important;
+    border-bottom: 2px solid #cccccc !important;
+    padding: 4px 16px !important;
+}
+
+.cant-episodes{
+    text-align: left !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: black !important;
+    padding: 12px !important;
+    margin-bottom: 20px !important;
+}
+

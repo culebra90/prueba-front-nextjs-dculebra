@@ -1,8 +1,8 @@
+import styles from './Podcast.module.css';
 import Grid from '@mui/material/Grid';
 import { Item } from '../../styles/functionStyle';
 import { propertiesEpisodes, DetailPodcast } from '../../utils/types';
 import Typography from '@mui/material/Typography';
-import styles from '../../styles/Podcast.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';

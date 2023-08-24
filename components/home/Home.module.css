@@ -1,0 +1,60 @@
+.number-list {
+  color: white !important;
+  font-weight: 600 !important;
+  background-color: #009fff !important;
+  border-radius: 8px !important;
+  line-height: 1.3 !important;
+  padding: 2px !important;
+}
+
+.avatar-home{
+  width: 100px !important;
+  height: 100px !important;
+  position: absolute !important;
+  top: -25px !important;
+  left: 100px !important;
+}
+
+.block-card{
+  position: relative !important;
+  margin-bottom: 160px !important;
+}
+
+.link-podcast{
+  text-decoration: none !important;  
+}
+
+.title-song{
+  text-transform: uppercase !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  font-size: 18px !important;  
+}
+
+.link-podcast:hover .title-song{
+  color: var(--link-color) !important;
+}
+
+.block-int-card{
+  max-width: 250px !important;
+  min-height: 100px !important;
+  padding-top: 40px !important;
+  margin-bottom: 0 !important;
+  transition: all 0.5s ease-out !important;
+  box-shadow: 0px 3px 7px -5px #222 !important;
+  -webkit-box-shadow: 0px 3px 7px -5px #222 !important;
+  -moz-box-shadow: 0px 3px 7px -5px #222 !important;
+}
+
+.link-podcast:hover .block-int-card{
+  background-color: #f3f3f3 !important !important;
+}
+
+.name-author{
+  font-weight: 600 !important; 
+  letter-spacing: -0.5px !important;
+}
+
+.link-podcast:hover .name-author{
+  color: var(--link-color) !important;
+}

@@ -1,0 +1,26 @@
+.header-title {
+  color: rgb(85, 185, 231) !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1px !important;
+  font-weight: 600 !important;
+  padding-bottom: 20px !important;
+  padding-top: 25px !important;
+  justify-content: space-between !important;
+  display: flex !important;
+  align-content: flex-end !important;
+  align-items: center !important;
+  height: 60px !important;
+  text-transform: Capitalize !important;
+}
+
+.link-header{
+  position: relative !important;
+  z-index: 999999 !important;
+  font-weight: 900 !important;
+  transition: 0.5s all !important;
+}
+
+.link-header:hover{
+  text-decoration: underline !important;
+  color: var(--link-color) !important;
+}

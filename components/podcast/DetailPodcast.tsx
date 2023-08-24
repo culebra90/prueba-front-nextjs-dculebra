@@ -1,3 +1,4 @@
+import styles from './Podcast.module.css';
 import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/router';
 import Paper from '@mui/material/Paper';
@@ -9,7 +10,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Item } from '../../styles/functionStyle';
-import styles from '../../styles/Podcast.module.css';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
