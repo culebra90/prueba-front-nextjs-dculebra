@@ -21,9 +21,7 @@ export const DetailPodcastHtml: React.FC<DetailPodcastHtmlProps> = ({ episodes }
     const { podcast } = router.query;
     const podcastId = podcast?.[1];
 
-    const linkEpisode = (episodeId:string) => {        
-        const reducedItem : any = episodes.find(item => item.id === episodeId);
-        localStorage.setItem('globalObject', JSON.stringify(reducedItem));
+    const linkEpisode = (episodeId:string) => {
         router.push(`/podcast/${podcastId}/episode/${episodeId}`);
     }
 

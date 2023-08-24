@@ -8,31 +8,33 @@ import { HeaderTitleLoading } from './HeaderTitle';
 
 import { LateralPanel } from './podcast/LateralPanel';
 import { DetailPodcastHtml } from './podcast/DetailPodcast';
-import { EpisodePodcast } from './podcast/EpisodePodcast'
+import { EpisodePodcast } from './podcast/EpisodePodcast';
 
 export const PodcastHtml: React.FC = () => {
     const router = useRouter();
     const { podcast } = router.query;
-    const [getData, setgetData] = useState<DetailPodcast[] | []>([]);
+    const [getData, setGetData] = useState<DetailPodcast[] | []>([]);
     const podcastId = podcast?.[1];
     const episodeId = podcast?.[3]; 
     
-    console.log("podcastId => ", podcastId)
+    console.log("podcastId => ", podcastId)    
 
     useEffect(() => {
-        const fetchData = async () => {
-        const res = await fetch(`/api/podcasts/${podcastId}`);
-        const getData = await res.json();        
-        setgetData(getData);           
-        };  
-        if (podcastId) fetchData();
+        const keyLocalStorage = `detailPodcast-${podcastId}`;
+        const getDetailPodcast = async () => {
+            const res = await fetch(`/api/podcasts/${podcastId}`);
+            const getData = await res.json();                    
+            setGetData(getData);           
+        };
+        if(podcastId){
+            getDetailPodcast();
+        }
     }, [podcastId]);
 
     return (      
         <React.Fragment>
             <Container maxWidth="lg">
-            <HeaderTitleLoading loading={getData.length ? false : true} />
-            <hr/>
+            <HeaderTitleLoading loading={getData.length ? false : true} />           
             <Box sx={{ flexGrow: 1 }} className="mt-5">
                 <Grid container spacing={12}>
                 <LateralPanel {...{ getData }} />
