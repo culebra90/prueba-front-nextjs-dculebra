@@ -13,7 +13,7 @@ interface ImageLateralProps {
     urlImage: string;
 }
 interface DetailPodcastProps {
-    getData: DetailPodcast[];
+    detailPodcast: DetailPodcast;
 }
 
 interface TitleAndAuthorProps {
@@ -47,27 +47,26 @@ const TitleAndAuthor : React.FC<TitleAndAuthorProps> = ({link, title, author, po
             </p>);
 }
 
-export const LateralPanel: React.FC<DetailPodcastProps> = ({ getData }) => {
+export const LateralPanel: React.FC<DetailPodcastProps> = ({ detailPodcast }) => {
     const router = useRouter();
     const { podcast } = router.query;
     const podcastId = podcast?.[1];
     const episodeId = podcast?.[3];
-    console.log("GETDATA LateralPanel => ", getData)
     return (<Grid item xs={6} md={4}>
                 <Item className={styles['item-lateral']}>
-                    {getData.length > 0 
-                        ? <ImageLateral link={(episodeId) ? true : false} podcastId={podcastId} urlImage={getData[0]?.image}/>
+                    {detailPodcast 
+                        ? <ImageLateral link={(episodeId) ? true : false} podcastId={podcastId} urlImage={detailPodcast?.image}/>
                         : <>Cargando..</> }
                 <Divider variant="middle" />
-                    {getData.length > 0  
-                        ? <TitleAndAuthor link={(episodeId) ? true : false} podcastId={podcastId} author={getData[0]?.author} title={getData[0]?.title}/>
+                    {detailPodcast  
+                        ? <TitleAndAuthor link={(episodeId) ? true : false} podcastId={podcastId} author={detailPodcast?.author} title={detailPodcast?.title}/>
                         : <>Cargando..</> }
                 <Divider variant="middle" />
-                    {getData.length > 0  
+                    {detailPodcast  
                         ? <>
                             <div className={styles['lateral-description']}>
                                 <span>Description:</span>
-                                <div className={styles['description-content']} dangerouslySetInnerHTML={{ __html: getData[0]?.description }} />
+                                <div className={styles['description-content']} dangerouslySetInnerHTML={{ __html: detailPodcast?.description }} />
                             </div>
                         </> 
                         : <>Cargando..</>}

@@ -26,6 +26,7 @@ interface propetiesMedia {
 }
 
 export interface DetailPodcast { 
+    id: string | string[] | undefined;
     title: string  
     author: string;
     description: string;

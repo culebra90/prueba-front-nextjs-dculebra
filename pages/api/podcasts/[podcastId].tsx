@@ -27,6 +27,7 @@ export const DetailsPodcast = async (req: NextApiRequest, res: NextApiResponse):
       }); 
       const channel = parsedData.rss.channel[0];      
       ResPodcastDetail = {
+        id: podcastId,
         title: channel.title[0],
         author: channel['itunes:author'][0],
         description: channel.description[0],
@@ -50,7 +51,7 @@ export const DetailsPodcast = async (req: NextApiRequest, res: NextApiResponse):
       };
       cacheData.put(podcastId, ResPodcastDetail, 24 * 1000 * 60 * 60);
     }
-    res.status(200).json([ResPodcastDetail]);
+    res.status(200).json(ResPodcastDetail);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }

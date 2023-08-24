@@ -3,16 +3,18 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import { Podcast } from '../utils/types';
+import { Podcast, DetailPodcast } from '../utils/types';
 import { HeaderTitleLoading } from './HeaderTitle';
 import { SearchBlock, CardPodcast, WithoutResults, LoadingPodcasts } from './home/modulesHome';
 import { useSelector, useDispatch } from 'react-redux';
-import { addList } from '../redux/podcastSlice'; 
+import { addList } from '../redux/podcastListSlice'; 
+import { addPodcast } from '../redux/detailPodcastSlice';
 
 
 export const Home: React.FC = () => {
 
     const listPodcasts = useSelector((state: { list: Podcast[] }) => state.list);
+    const detailPodcast = useSelector((state: { detail: DetailPodcast }) => state.detail);
     const dispatch = useDispatch();   
     
     const [searchTerm, setSearchTerm] = useState('');
@@ -22,9 +24,12 @@ export const Home: React.FC = () => {
     useEffect(() => {
         fetch('/api/listPodcast')
             .then((response) => response.json())
-            .then((data) => dispatch(addList(data)))
+            .then((data) => {
+                dispatch(addList(data));
+                dispatch(addPodcast({}));
+            })
             .catch((error) => console.log(error));        
-    }, []);
+    }, [listPodcasts]);
 
     useEffect(() => {        
         const filteredResults = listPodcasts.filter(

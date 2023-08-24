@@ -7,7 +7,6 @@ export const podcastListSlice = createSlice({
     initialState: initialStateListPodcasts,
     reducers: {
         addList: (state, action) => {
-            console.log("action.payload => ", action.payload)
             return action.payload;
         }
     }

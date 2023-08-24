@@ -8,8 +8,6 @@ import { PodcastHtml } from '@/components/PodcastHtml';
 export const Main = () => {
     const router = useRouter();
     const { podcast } = router.query;
-    
-    console.log("router.asPath => ", router.asPath)
 
     if(router.asPath.indexOf("/[[...podcast]]")!==-1) 
         return (<><HeaderTitleLoading loading={true} /><hr/></>);
