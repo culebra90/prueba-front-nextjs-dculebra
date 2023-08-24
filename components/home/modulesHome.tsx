@@ -11,24 +11,28 @@ import TextField from '@mui/material/TextField';
 
 import styles from '../../styles/Home.module.css';
 import { Podcast } from '../../utils/types';
+import { useSelector, useDispatch } from 'react-redux';
 
 interface CardPodcastProps {
-    podcast: Podcast;
-    i: number;
+    index: number;
 }
 
 interface SearchBlockProps {
     searchTerm: string;
     handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    searchResults: object[];
+    numberSearch: number;
 }
 
-export const SearchBlock: React.FC<SearchBlockProps> = ({ searchTerm, handleSearch, searchResults }) => {
+interface PropertyState {
+    list: Podcast[]
+}
+
+export const SearchBlock: React.FC<SearchBlockProps> = ({ searchTerm, handleSearch, numberSearch }) => {
 
     return (<Grid container justifyContent="flex-end" alignItems="center" spacing={1} className="m-2 pr-5">
                 <Grid item>              
                     <Typography variant="h6" className={styles['number-list']}>
-                    {searchResults.length}
+                    {numberSearch}
                     </Typography>
                 </Grid>
                 <Grid item>
@@ -37,11 +41,12 @@ export const SearchBlock: React.FC<SearchBlockProps> = ({ searchTerm, handleSear
             </Grid>);
 }
 
-export const CardPodcast: React.FC<CardPodcastProps> = ({ podcast, i }) => {
-    return (<Grid item xs={2} sm={4} md={4} lg={1} key={i} className={styles['block-card']}>
+export const CardPodcast: React.FC<CardPodcastProps> = ({ index }) => {
+    const podcast = useSelector((state: PropertyState) => state.list[index]);
+    return (<Grid item xs={2} sm={4} md={4} lg={1} key={index} className={styles['block-card']}>
                 <Link href={`/podcast/${podcast.id}`} passHref className={styles['link-podcast']}>
                 <Avatar alt="{img-{podcast.name}" src={podcast.image.url} className={styles['avatar-home']} />
-                <Card className={styles['block-int-card']} key={i}>
+                <Card className={styles['block-int-card']} key={index}>
                     <CardContent className="text-center">
                     <Typography gutterBottom variant="h6" component="div" className={styles['title-song']}>
                         {podcast.name}

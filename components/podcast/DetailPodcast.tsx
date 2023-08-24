@@ -42,7 +42,7 @@ export const DetailPodcastHtml: React.FC<DetailPodcastHtmlProps> = ({ episodes }
                     <TableBody>
                         {episodes?.map((row : propertiesEpisodes,i:number) => (
                         <TableRow key={row.title} className={(i%2===0) ? styles['filaPar'] : styles['filaImpar']}>
-                            <TableCell className={`${styles['celda']} ${styles['primeraCelda']}`} key={`title_${row.title}`} component="th" scope="row" onClick={() => linkEpisode(row.id)}>
+                            <TableCell className={`${styles['celda']} ${styles['link']} ${styles['primeraCelda']}`} key={`title_${row.title}`} component="th" scope="row" onClick={() => linkEpisode(row.id)}>
                                 {row.title}
                             </TableCell>
                             <TableCell className={styles['celda']} key={`title_${row.date}`} align="left">{row.date}</TableCell>

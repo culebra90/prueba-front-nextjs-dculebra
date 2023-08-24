@@ -109,6 +109,14 @@
     padding: 8px 16px;    
 }
 
+.celda.link{
+    cursor: pointer;    
+}
+
+.celda.link:hover{
+    text-decoration: underline;
+}
+
 .primeraCelda {
     border-left: none;
     color:var(--link-color);
