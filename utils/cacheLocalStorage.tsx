@@ -2,25 +2,31 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/es';
 
 export const setCache = (key: string, data: any) => {
-  if (data?.episodes.length > 100) {
-    const chunkSize = 100;
+  const chunkSize = 100;
+  if (Array.isArray(data?.episodes) && data.episodes.length > chunkSize) {
+    data.episodes.forEach((episode : any) => {
+      if (episode.description.length > 2000) {
+        episode.description = episode.description.slice(0, 2000) + "...";
+      }
+    });
     for (let i = 0; i < data.episodes.length; i += chunkSize) {
       const chunk = data.episodes.slice(i, i + chunkSize);
       localStorage.setItem(`${key}-blk-ep-${i}`, JSON.stringify(chunk));
     }
     const { episodes, ...dataAxe } = data;
     const payloadAxe = {
-      expiration: dayjs().add(5, 'minute'),
+      expiration: dayjs().add(24, 'hour'),
       data: dataAxe,
     };
     localStorage.setItem(key, JSON.stringify(payloadAxe));
-  } else {
-    const payload = {
-      expiration: dayjs().add(24, 'hour'),
-      data,
-    };
-    localStorage.setItem(key, JSON.stringify(payload));
+  }else if(Array.isArray(data?.episodes)){
+    localStorage.setItem(`${key}-blk-ep-0`, JSON.stringify(data.episodes));
   }
+  const payload = {
+    expiration: dayjs().add(24, 'hour'),
+    data,
+  };
+  localStorage.setItem(key, JSON.stringify(payload));  
 };
 
 export const getCache = (key: string) => {

@@ -12,8 +12,16 @@ export const EpisodePodcast: React.FC = () => {
     const router = useRouter();
     const { podcast } = router.query;
     const podcastId = podcast?.[1];
-    const episodeId = podcast?.[3]; 
-    const episode : propertiesEpisodes = detailPodcast?.episodes.filter(episode => episode.id == episodeId)[0];  
+    let episodeId : any = podcast?.[3]; 
+
+    let episode : propertiesEpisodes;
+
+    if(episodeId?.indexOf('num-') !== -1){        
+        episodeId = episodeId?.split('num-')[1];
+        episode = detailPodcast?.episodes[episodeId];
+    }else{
+        episode = detailPodcast?.episodes.filter(episode => episode.id == episodeId)[0];
+    }
 
     return (<>{(episode) ? <Grid item xs={6} md={8} className="mt-0 pt-0">
                 <Item>

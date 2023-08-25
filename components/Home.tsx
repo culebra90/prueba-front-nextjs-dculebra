@@ -32,7 +32,6 @@ export const Home: React.FC = () => {
                 dispatch(addList(listPodcastsCache));
             }
         } else if (listPodcasts.length == 0) {
-            console.log("fetching... server /HOME/");
             fetch('/api/listPodcast')
                 .then((response) => response.json())
                 .then((data) => {

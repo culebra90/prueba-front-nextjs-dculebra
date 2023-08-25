@@ -36,14 +36,14 @@ export const DetailPodcastHtml = () => {
                     </TableHead>
                     <TableBody>
                         {episodes?.map((row: propertiesEpisodes, i: number) => (
-                            <TableRow key={row.title} className={(i % 2 === 0) ? styles['filaPar'] : styles['filaImpar']}>
-                                <TableCell className={`${styles['celda']} ${styles['link']} ${styles['primeraCelda']}`} key={`title_${row.title}`} component="th" scope="row">
+                            <TableRow key={`title_${i}-3`} className={(i % 2 === 0) ? styles['filaPar'] : styles['filaImpar']}>
+                                <TableCell className={`${styles['celda']} ${styles['link']} ${styles['primeraCelda']}`} key={`title_${i}`} component="th" scope="row">
                                     <Link href={`/podcast/${podcastId}/episode/${row.id}`} passHref className={styles['link-title-episode']}>
                                         {row.title}
                                     </Link>
                                 </TableCell>
-                                <TableCell className={styles['celda']} key={`title_${row.date}`} align="left">{row.date}</TableCell>
-                                <TableCell className={`${styles['celda']} ${styles['ultimaCelda']}`} key={`title_${row.duration}`} align="right">{row.duration}</TableCell>
+                                <TableCell className={styles['celda']} key={`title_${i}-2`} align="left">{row.date}</TableCell>
+                                <TableCell className={`${styles['celda']} ${styles['ultimaCelda']}`} key={`title_${i}-4`} align="right">{row.duration}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
