@@ -15,8 +15,8 @@ Esta aplicación es una vista de podcast construida utilizando Next.js, React y 
 
 ## Instalación
 
-1. Clona este repositorio: `git clone https://github.com/tu-usuario/tu-repositorio.git`
-2. Navega al directorio del proyecto: `cd tu-repositorio`
+1. Clona este repositorio: `git clone https://github.com/culebra90/prueba-front-nextjs-dculebra.git`
+2. Navega al directorio del proyecto: `cd prueba-front-nextjs-dculebra`
 3. Instala las dependencias: `npm install`
 
 ## Comandos Disponibles
