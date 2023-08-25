@@ -1,6 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { propertiesEpisodes, propetiesMedia} from "../utils/types";
 
-const initialStateDetailPodcast = {};
+const initialMedia : propetiesMedia = {
+    length: "",
+    type: "",
+    url: "",
+}
+
+const initialStateDetailPodcast : propertiesEpisodes = {
+    title: "",
+    date: "",
+    description: "",
+    duration: "",
+    id: "",
+    media: initialMedia
+};
 
 export const detailPodcastSlice = createSlice({
     name: "detailPodcast",

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Podcast, propertiesImage} from "../utils/types";
 
-const initialStateListPodcasts = [];
+const initialStateListPodcasts : Podcast[] = [];
 
 export const podcastListSlice = createSlice({
     name: "listPodcast",

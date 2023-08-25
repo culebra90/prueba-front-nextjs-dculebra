@@ -1,4 +1,4 @@
-interface propertiesImage {
+export interface propertiesImage {
     url: string;
     height: number;
 }
@@ -19,7 +19,7 @@ export interface propertiesEpisodes {
     media: propetiesMedia | false;
 }
 
-interface propetiesMedia {
+export interface propetiesMedia {
     length: string;
     type: string;
     url: string;

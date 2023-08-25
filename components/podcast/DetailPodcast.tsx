@@ -18,41 +18,37 @@ export const DetailPodcastHtml = () => {
     const { podcast } = router.query;
     const podcastId = podcast?.[1];
     const detailPodcast = useSelector((state: { detail: DetailPodcast }) => state.detail);
-    const episodes : propertiesEpisodes[] = detailPodcast?.episodes;
-
-    const linkEpisode = (episodeId:string) => {
-        router.push(`/podcast/${podcastId}/episode/${episodeId}`);
-    }
+    const episodes: propertiesEpisodes[] = detailPodcast?.episodes;
 
     return (<Grid item xs={6} md={8} className="mt-0 pt-0">
-                <Item className={styles['cant-episodes']}>
-                    Episodes: {episodes?.length}
-                </Item>
-                <Item className='p-3'>
-                <TableContainer component={Paper} className={styles['tableDetail']}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
+        <Item className={styles['cant-episodes']}>
+            Episodes: {episodes?.length}
+        </Item>
+        <Item className='p-3'>
+            <TableContainer component={Paper} className={styles['tableDetail']}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
                             <TableCell className={`${styles['primeraCelda']} ${styles['strong-cell']}`}>Title</TableCell>
                             <TableCell className={`${styles['celda']} ${styles['strong-cell']}`} align="left">Date</TableCell>
                             <TableCell className={`${styles['ultimaCelda']} ${styles['strong-cell']}`} align="right">Duration</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {episodes?.map((row : propertiesEpisodes,i:number) => (
-                            <TableRow key={row.title} className={(i%2===0) ? styles['filaPar'] : styles['filaImpar']}>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {episodes?.map((row: propertiesEpisodes, i: number) => (
+                            <TableRow key={row.title} className={(i % 2 === 0) ? styles['filaPar'] : styles['filaImpar']}>
                                 <TableCell className={`${styles['celda']} ${styles['link']} ${styles['primeraCelda']}`} key={`title_${row.title}`} component="th" scope="row">
-                                    <Link href={`/podcast/${podcastId}/episode/${row.id}`} passHref className={styles['link-title-episode']}>                                    
-                                        {row.title}                                                       
-                                    </Link>                                
+                                    <Link href={`/podcast/${podcastId}/episode/${row.id}`} passHref className={styles['link-title-episode']}>
+                                        {row.title}
+                                    </Link>
                                 </TableCell>
                                 <TableCell className={styles['celda']} key={`title_${row.date}`} align="left">{row.date}</TableCell>
                                 <TableCell className={`${styles['celda']} ${styles['ultimaCelda']}`} key={`title_${row.duration}`} align="right">{row.duration}</TableCell>
                             </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                </Item>
-            </Grid>)
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Item>
+    </Grid>)
 };
