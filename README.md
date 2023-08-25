@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vista de Podcast con Next.js, React, Redux y Local Storage Cache
 
-## Getting Started
+Esta aplicación es una vista de podcast construida utilizando Next.js, React y Redux. Además, se utiliza Local Storage para cachear datos. La aplicación cuenta con las funciones de desarrollo, construcción y modo de producción, y cumple con los requisitos mínimos de Node.js v16.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Vista Principal: Muestra una lista de podcasts disponibles.
+- Detalles de un Podcast: Muestra información detallada sobre un podcast específico.
+- Detalles de un Capítulo: Muestra información detallada sobre un capítulo de un podcast.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Requisitos Previos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js v16: Asegúrate de tener Node.js v16 instalado en tu sistema.
+- npm: Gestor de paquetes de Node.js. Se utiliza para instalar dependencias y ejecutar comandos.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Instalación
 
-## Learn More
+1. Clona este repositorio: `git clone https://github.com/tu-usuario/tu-repositorio.git`
+2. Navega al directorio del proyecto: `cd tu-repositorio`
+3. Instala las dependencias: `npm install`
 
-To learn more about Next.js, take a look at the following resources:
+## Comandos Disponibles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Desarrollo: `npm run dev` - Inicia el servidor de desarrollo.
+- Construcción: `npm run build` - Compila el proyecto para producción.
+- Modo Producción: `npm run start` - Inicia la aplicación en modo de producción.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Estructura del Proyecto
 
-## Deploy on Vercel
+El proyecto está estructurado de la siguiente manera:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+├── /components # Componentes React reutilizables
+├── /pages # Páginas de la aplicación
+├── /redux # Configuración de Redux y acciones
+├── /styles # Estilos CSS
+├── /utils # Utilidades y funciones auxiliares
+└── /public # Archivos públicos
